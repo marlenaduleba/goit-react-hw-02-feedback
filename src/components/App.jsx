@@ -19,23 +19,39 @@ countFeedback = property => {
   }))
 };
 
-//countTotalFeedback()
+countTotalFeedback() {
+  return this.state.good + this.state.neutral + this.state.bad;
+}
 
-//countPositiveFeedbackPercentage()
+countPositiveFeedbackPercentage() {
+  return Math.ceil((this.state.good * 100) / this.countTotalFeedback());
+}
 
   render() {
+    const good = this.state.good;
+    const neutral = this.state.neutral;
+    const bad = this.state.bad;
+
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
+
     return (
       <div>
         
         <Section title="Please leave feedback">
-          <FeedbackOptions />
+          <FeedbackOptions
+           options={Object.keys(this.state)}
+           onLeaveFeedback={this.onLeaveFeedback}
+            />
         </Section>
        
           <Section title="Statistics">
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
             />
           </Section>
       </div>
