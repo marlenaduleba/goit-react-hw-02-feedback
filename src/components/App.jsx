@@ -4,6 +4,7 @@ import Statistics from './Statistics/Statistics';
 import Section from './Section/Section';
 import Notification from './Notification/Notification';
 import Container from './Container/Container';
+import Box from './Box/Box';
 
 export default class App extends Component {
   state = {
@@ -37,23 +38,25 @@ export default class App extends Component {
     return (
     
         <Container>
-          <Section title="Please leave feedback">
-            <FeedbackOptions
-              options={Object.keys(this.state)}
-              onLeaveFeedback={this.onLeaveFeedback}
-            />
-          </Section>
-          <Section title="Statistics">
-                {total ? (<Statistics
-                good={good}
-                neutral={neutral}
-                bad={bad}
-                total={total}
-                positivePercentage={positivePercentage}
-              />) : (<Notification message="There is no feedback"/>)}
-          
-          
-          </Section>
+          <Box>
+            <Section title="Please leave feedback">
+              <FeedbackOptions
+                options={Object.keys(this.state)}
+                onLeaveFeedback={this.onLeaveFeedback}
+              />
+            </Section>
+            <Section title="Statistics">
+                  {total ? (<Statistics
+                  good={good}
+                  neutral={neutral}
+                  bad={bad}
+                  total={total}
+                  positivePercentage={positivePercentage}
+                />) : (<Notification message="There is no feedback"/>)}
+            
+            
+            </Section>
+          </Box>
         </Container>
     
     );
