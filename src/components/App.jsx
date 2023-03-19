@@ -11,6 +11,12 @@ class App extends Component {
     };
   }
 
+countFeedback = property => {
+  this.setState((prevState) => ({
+    [property]: prevState[property] + 1 
+  }))
+};
+
   render() {
     return (
       <div>
