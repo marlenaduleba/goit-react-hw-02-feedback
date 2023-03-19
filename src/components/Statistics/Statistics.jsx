@@ -14,7 +14,7 @@ export default class Statistics extends Component {
   render() {
     const { good, neutral, bad, total, positivePercentage } = this.props;
     return (
-      <ul>
+      <ul className={css.list}>
         <li className={`${css.item} ${css.good}`}>Good: {good}</li>
         <li className={`${css.item} ${css.neutral}`}> Neutral: {neutral}</li>
         <li className={`${css.item} ${css.bad}`}> Bad: {bad}</li>
