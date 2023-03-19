@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './Notification.module.css';
 
 
 export default class Notification extends Component {
@@ -8,6 +9,6 @@ export default class Notification extends Component {
   };
 
   render() {
-    return <p>{this.props.message}</p>;
+    return <p className={css.message}>{this.props.message}</p>;
   }
 }
