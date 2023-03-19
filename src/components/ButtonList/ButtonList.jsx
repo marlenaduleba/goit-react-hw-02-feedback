@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './ButtonList.module.css';
 
 
 export default class ButtonList extends Component {
@@ -8,6 +9,6 @@ export default class ButtonList extends Component {
   };
 
   render() {
-    return <ul>{this.props.children}</ul>;
+    return <ul className={css.list}>{this.props.children}</ul>;
   }
 }
