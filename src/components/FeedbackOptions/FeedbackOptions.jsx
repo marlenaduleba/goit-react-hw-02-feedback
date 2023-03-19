@@ -1,17 +1,32 @@
-const FeedbackOptions = () => {
-return (
-    <ul>
-    <li>
-      <button>Good</button>
-    </li>
-    <li>
-      <button>Neutral</button>
-    </li>
-    <li>
-      <button>Bad</button>
-    </li>
-  </ul>
-)
-};
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ButtonList from 'components/ButtonList';
+import ButtonItem from 'components/ButtonItem';
 
-export default FeedbackOptions;
+export default class FeedbackOption extends Component {
+  static propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired,
+  };
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  render() {
+    const { options, onLeaveFeedback } = this.props;
+
+    return (
+      <ButtonList>
+        {options.map(btn => (
+          <ButtonItem
+            key={btn}
+            text={this.capitalizeFirstLetter(btn)}
+            name={btn}
+            onLeaveFeedback={onLeaveFeedback}
+          />
+        ))}
+      </ButtonList>
+    );
+  }
+}
